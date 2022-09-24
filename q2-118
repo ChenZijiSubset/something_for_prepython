@@ -1,0 +1,65 @@
+
+Exercise 1.18: Bouncing ball
+A rubber ball is dropped from a height h_0. After each bounce, the height it rebounds to decreases by 10%, i.e. after one bounce, it reaches 0.9*h_0, after two bounces it reaches 0.9*0.9*h_0, etc. Write a Python function compute_heights that returns a list of the maximum heights of the ball after each bounce (including after 0 bounces, i.e. its initial height), until either the ball has bounced n times or its maximum height falls below h1. The function should take h_0, h_1 and n as keyword arguments, with default values of 1.0, 0.3 and 10, respectively.
+
+HINT: If n bounces of the ball are not reached, the last value of height in the list should be the first height at which the ball fell below h1. More precisely, the last value is less than h1.
+
+
+# Uncomment and complete this code - keep the names the same for testing purposes.
+
+def compute_heights(h_0=1.0, h_1=0.3, n=10):
+    l = []
+    h = h_0
+    for i in range(0, n + 1):
+        l.append(h)
+        h = 0.9 * h
+        if (h < h_1):
+            break
+    return l
+    
+
+
+REFERENCE: exercise-1_18
+SATISFIED: False
+MESSAGES:
+  - SUCCESS: You are appending the correct height to a list. Well done!
+  - ERROR: You are not counting the bounces correctly.
+  - SUCCESS: Before the loop, you start with an empty list. Amazing!
+  - SUCCESS: Before the loop, you set the ounter to zero. Great!
+  - SUCCESS: Wow! Your function returns the correct solution.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Running tests
+
+---------------------------------------------------------------------
+question 1.18 > Suite 1 > Case 2
+
+import numpy as np
+>>> np.allclose(compute_heights(h_0=0.5), [0.5, 0.45, 0.405, 0.36450000000000005, 0.32805000000000006, 0.2952450000000001])
+Traceback (most recent call last):
+  File "<__array_function__ internals>", line 180, in allclose
+  File "/root/anaconda3/envs/introduction-to-python/lib/python3.9/site-packages/numpy/core/numeric.py", line 2265, in allclose
+    res = all(isclose(a, b, rtol=rtol, atol=atol, equal_nan=equal_nan))
+  File "<__array_function__ internals>", line 180, in isclose
+  File "/root/anaconda3/envs/introduction-to-python/lib/python3.9/site-packages/numpy/core/numeric.py", line 2375, in isclose
+    return within_tol(x, y, atol, rtol)
+  File "/root/anaconda3/envs/introduction-to-python/lib/python3.9/site-packages/numpy/core/numeric.py", line 2356, in within_tol
+    return less_equal(abs(x-y), atol + rtol * abs(y))
+ValueError: operands could not be broadcast together with shapes (5,) (6,) 
+
+# Error: expected
+#     True
+# but got
+#     Traceback (most recent call last):
+#       ...
+#     ValueError: operands could not be broadcast together with shapes (5,) (6,) 
+
+Run only this test case with "python3 ok -q exercise-1_18 --suite 1 --case 2"
+---------------------------------------------------------------------
+Test summary
+    Passed: 1
+    Failed: 1
+[oooook.....] 50.0% passed
+
+{'passed': 1, 'failed': 1, 'locked': 0}
