@@ -1,0 +1,44 @@
+Exercise 1.19: Calculate  𝜋 
+A formula for  𝜋  is given by the Gregory-Leibniz series:
+
+𝜋=4(11−13+15−17+19+...)
+ 
+Note that the denominators of the terms in this series are the positive odd numbers. Write a Python function calculate_pi(n) following the guidelines below; each of the first three steps can be completed using a single list comprehension.
+
+Step 1:
+
+Produce a list of the first n odd numbers, for n=100.
+
+Step 2:
+
+Make a list of the signs of each term, i.e. [1, -1, 1, -1, ...]. Hint: think about the value of  (−1)𝑖  for integer  𝑖 .
+
+Step 3:
+
+Using the results of steps 1 and 2, make a list of the first n terms in the above series.
+
+Step 4:
+
+Use your my_sum function to sum this series, multiply by 4, and return the result.、
+
+
+# Uncomment and complete this code - keep the names the same for testing purposes.
+
+def calculate_pi(n):
+    l = []
+    tmp = []
+    r = []
+    j = -1
+    
+    for i in range(1, n):
+        ll = 2 * i - 1
+        l.append(ll)
+        t = j**(i + 1)
+        tmp.append(t)
+
+    for i in range(0, n - 1):
+        rr = (1/l[i]) * tmp[i]
+        r.append(rr)
+        
+    return 4 * my_sum(r)
+calculate_pi(100)
