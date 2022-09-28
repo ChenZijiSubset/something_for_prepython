@@ -1,0 +1,51 @@
+Exercise 2.9: Explore array slicing
+Create a NumPy array called w with 31 uniformly spaced values ranging from 0 to 3.
+Using array slicing, create a NumPy array called wbits that starts from the  4𝑡ℎ  element of w, excludes the final element of w and selects every  3𝑟𝑑  element.
+
+# Uncomment and complete this code - keep the names the same for testing purposes.
+
+w = np.linspace(0, 3, 31)
+wbits = w[3:29:2]
+print(w)
+print(wbits)
+
+REFERENCE: exercise-2_9
+SATISFIED: False
+MESSAGES:
+  - SUCCESS: Great! You created array w correctly.
+  - ERROR: Hmm... You did no slice array w correctly.
+  
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Running tests
+
+---------------------------------------------------------------------
+question 2.9 > Suite 1 > Case 2
+
+import numpy as np
+>>> np.allclose(wbits, [0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7])
+Traceback (most recent call last):
+  File "<__array_function__ internals>", line 180, in allclose
+  File "/root/anaconda3/envs/introduction-to-python/lib/python3.9/site-packages/numpy/core/numeric.py", line 2265, in allclose
+    res = all(isclose(a, b, rtol=rtol, atol=atol, equal_nan=equal_nan))
+  File "<__array_function__ internals>", line 180, in isclose
+  File "/root/anaconda3/envs/introduction-to-python/lib/python3.9/site-packages/numpy/core/numeric.py", line 2375, in isclose
+    return within_tol(x, y, atol, rtol)
+  File "/root/anaconda3/envs/introduction-to-python/lib/python3.9/site-packages/numpy/core/numeric.py", line 2356, in within_tol
+    return less_equal(abs(x-y), atol + rtol * abs(y))
+ValueError: operands could not be broadcast together with shapes (13,) (9,) 
+
+# Error: expected
+#     True
+# but got
+#     Traceback (most recent call last):
+#       ...
+#     ValueError: operands could not be broadcast together with shapes (13,) (9,) 
+
+Run only this test case with "python3 ok -q exercise-2_9 --suite 1 --case 2"
+---------------------------------------------------------------------
+Test summary
+    Passed: 1
+    Failed: 1
+[oooook.....] 50.0% passed
+
+{'passed': 1, 'failed': 1, 'locked': 0}
