@@ -1,0 +1,40 @@
+
+Exercise 2.2: Make a table (a list of lists) of function values
+Write a loop that evaluates the expression  𝑦(𝑡)=𝑣0𝑡−12𝑔𝑡2  for 11 evenly spaced  𝑡  values ranging from  0 , to  2𝑣0/𝑔  (remember that dividing a range into  𝑛  intervals results in  𝑛+1  values). You can assume that  𝑣0=1 ms −1  and  𝑔=9.81 ms −2 .
+Store the time values and displacement ( 𝑦 ) values as a nested list, i.e.
+tlist = [t0, t1, t2, ...]
+ylist = [y0, y1, y2, ...]
+displacement = [tlist, ylist]
+Use the variable names tlist, ylist and displacement as illustrated in the above example for testing purposes.
+
+# Uncomment and modify the following lines. Do not change variable names for testing purposes.
+def y(v0, tlist):
+    y = []
+    for i in range(len(tlist)):
+        g = 9.81
+        tmp = v0 * tlist[i] - 0.5 * g * tlist[i]**2
+        y.append(tmp)
+    return y
+
+v0 = 1
+g = 9.81
+
+t = 0
+tlist = []
+for i in range(0, 11):
+    tlist.append(t)
+    t = t + 2 * v0 / (10 * g)
+
+ylist = y(v0, tlist)
+
+displacement = [tlist, ylist]
+
+with pybryt.check(pybryt_reference(2, 2)):
+    tlist, ylist, displacement
+    
+REFERENCE: exercise-2_2
+SATISFIED: False
+MESSAGES:
+  - SUCCESS: You generated tlist correctly. Great!
+  - ERROR: Your ylist is wrong.
+  - ERROR: Hmm... It seems your nested displacement list is wrong.
