@@ -1,0 +1,67 @@
+
+Exercise 2.7: Make a list of prime numbers
+Define a function called prime_list that lists all the prime numbers up to a given  𝑛 .
+
+Hint: Google the Sieve of Eratosthenes.
+
+# Uncomment and complete this code - keep the names the same for testing purposes.
+
+def get_key(d, val):
+    k = []
+    for key, value in d.items():
+         if val == value:
+            k.append(key)
+    return k
+
+def prime_list(n):
+    
+    l = []
+    key = []
+    for i in range(1, n):
+        l.append(i + 1)
+        
+        
+    d = dict.fromkeys(l, '0')
+    
+    for i in range(2, n):
+        tmp = i
+        tmp = tmp + i
+        while (tmp <= n):
+            d[tmp] = 1
+            tmp = tmp + i
+        
+    prime = get_key(d, '0')
+#     ...
+
+
+Running tests
+
+---------------------------------------------------------------------
+question 2.7 > Suite 1 > Case 1
+
+import numpy as np
+>>> np.allclose(prime_list(100), [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97])
+Traceback (most recent call last):
+  File "<__array_function__ internals>", line 180, in allclose
+  File "/root/anaconda3/envs/introduction-to-python/lib/python3.9/site-packages/numpy/core/numeric.py", line 2265, in allclose
+    res = all(isclose(a, b, rtol=rtol, atol=atol, equal_nan=equal_nan))
+  File "<__array_function__ internals>", line 180, in isclose
+  File "/root/anaconda3/envs/introduction-to-python/lib/python3.9/site-packages/numpy/core/numeric.py", line 2372, in isclose
+    xfin = isfinite(x)
+TypeError: ufunc 'isfinite' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+
+# Error: expected
+#     True
+# but got
+#     Traceback (most recent call last):
+#       ...
+#     TypeError: ufunc 'isfinite' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+
+Run only this test case with "python3 ok -q exercise-2_7 --suite 1 --case 1"
+---------------------------------------------------------------------
+Test summary
+    Passed: 0
+    Failed: 1
+[k..........] 0.0% passed
+
+{'passed': 0, 'failed': 1, 'locked': 0}
