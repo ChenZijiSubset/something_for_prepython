@@ -156,3 +156,8 @@ c.NotebookApp.allow_remote_access = True
 
 then you can use the link with token at any browser in any place open your jupyter notebook. 
 
+I upload my answer here, the code all passed oktest.
+Some of them fail the pybryt test:
+1.15 1.18
+2.2 2.10 2.11 2.12
+4.1 4.4 4.9
