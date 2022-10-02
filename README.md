@@ -1,4 +1,4 @@
-# something_for_preclass
+# something_for_preclass https://github.com/ese-msc/introduction-to-python
 record the problems that may be met during the completion of prehomework, please forgive that some of them are really easy 
 
 I choose a cloud server as my development machine.
