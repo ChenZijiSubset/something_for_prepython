@@ -1,0 +1,53 @@
+Exercise 4.4: Improve a program
+The file data/densities.dat contains a table of densities of various substances measured in  gcm−3 . The following program reads the data in this file and produces a dictionary whose keys are the names of substances, and the values are the corresponding densities.
+
+One problem we face when implementing the program above is that the name of the substance can contain one or two words, and maybe more words in a more comprehensive table. The purpose of this exercise is to use string operations to shorten the code and make it more general. Implement the following two methods in separate functions read_densities_join and read_densities_substrings, and control that they give the same result.
+
+In read_densities_join, let substance consist of all the words but the last and use the join() method to combine the words. Replace any spaces between words in substances with underscore.
+In read_densities_substrings, observe that all the densities (numerical values) start in the same column, and use substrings to divide line into two parts. Replace any spaces between words in substances with underscore. (Hint: Remember to strip the first part such that, e.g. the density of ice is obtained as densities["ice"] and not densities["ice     "].)
+
+
+# Uncomment and modify the following code. Do not change variable names for testing purposes.
+
+def read_densities_join(filename):
+    with open(filename, "r") as infile:
+        densities = {}
+        for line in infile:
+            words = line.split(' ')
+            density = float(words[-1])
+            
+            for i in range(0, (len(words) - 1)):
+                substance = "_".join(words[0: i])
+                if words[i] == '':
+                    break
+                    
+            densities[substance] = density
+
+    return densities
+#     ...
+
+def read_densities_substrings(filename):
+    with open(filename, "r") as infile:
+        densities = {}
+        for line in infile:
+            words = line.split()
+            density = float(words[-1])
+
+            if len(words[:-1]) == 2:
+                substance = words[0] + "_" + words[1]
+            else:
+                substance = words[0]
+
+            densities[substance] = density
+
+    return densities
+#     ...
+
+REFERENCE: exercise-4_4_1
+SATISFIED: False
+MESSAGES:
+  - SUCCESS: Amazing! You are extracting densities and adding them as items to the dictionary.
+  - SUCCESS: Great! You are iterating through the file line by line.
+  - SUCCESS: Great! You create an empty dictionary before the loop.
+  - ERROR: You do not split lines into fragments
+  - SUCCESS: Wow! Your implementation of read_densities_join returns the correct dictionary.
